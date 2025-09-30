@@ -1,6 +1,4 @@
-// ===============================================
-// QUIZ LOGIC
-// ===============================================
+// Elementos do DOM
 const welcomeScreen = document.getElementById('welcome-screen');
 const startBtn = document.getElementById('start-btn');
 const quizScreen = document.getElementById('quiz-screen');
@@ -14,9 +12,20 @@ const characterName = document.getElementById('character-name');
 const characterDescription = document.getElementById('character-description');
 const characterScore = document.getElementById('character-score');
 const restartBtn = document.getElementById('restart-btn');
-const backToMenuBtn = document.getElementById('back-to-menu-btn');
 const progressFill = document.getElementById('progress-fill');
 
+// ADIÇÃO: Referência ao botão "Voltar ao Menu"
+const backToMenuBtn = document.getElementById('back-to-menu-btn'); 
+// Containers de Tela
+const gameContainer = document.getElementById('game-container');
+const universeSelectionScreen = document.getElementById('universe-selection-screen'); // Pode ser null se não estiver no HTML
+
+// Estado do Jogo
+let currentQuestionIndex = 0;
+let selectedOptionIndex = null;
+let characters = [];
+
+// Classe para representar um personagem
 class Character {
     constructor(name, description, image) {
         this.name = name;
@@ -26,34 +35,35 @@ class Character {
     }
 }
 
+// Definição dos personagens e suas imagens
 const frigg = new Character(
     'Frigg, a Sábia de Asgard',
-    'Você possui a sabedoria e a intuição de Frigg, a rainha de Asgard. Sua maior força reside na sua capacidade de ver além do presente e de tecer o destino com cautela e graça.',
+    'Você possui a sabedoria e a intuição de Frigg, a rainha de Asgard. Sua maior força reside na sua capacidade de ver além do presente e de tecer o destino com cautela e graça. Você é um conselheiro confiável e um guardião do lar.',
     'https://img.freepik.com/premium-photo/nordic-goddess-frigg-norse-germanic-mythology_1040474-9844.jpg'
 );
 
 const thor = new Character(
     'Thor, o Trovão de Asgard',
-    'Você é forte, corajoso e leal, como Thor, o deus do trovão. Sua força é inigualável e você não hesita em lutar por aquilo que é justo.',
+    'Você é forte, corajoso e leal, como Thor, o deus do trovão. Sua força é inigualável e você não hesita em lutar por aquilo que é justo. Sua presença é uma garantia de segurança e sua determinação é uma força da natureza.',
     'https://cdn.pixabay.com/photo/2025/02/13/14/16/thor-9403973_1280.png'
 );
 
 const loki = new Character(
     'Loki, o Astuto de Asgard',
-    'Você é um mestre da astúcia e da transformação, assim como Loki. Sua mente é seu principal campo de batalha.',
+    'Você é um mestre da astúcia e da transformação, assim como Loki. Sua mente é seu principal campo de batalha, e você usa a inteligência e a trapaça para alcançar seus objetivos. Você é imprevisível, mas sempre fascinante.',
     'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZdhaFgjYZWXT8Kun3aVbnU27vN7hK4tWNNg&s'
 );
 
 const heimdall = new Character(
     'Heimdall, o Vigilante de Asgard',
-    'Você possui a visão aguçada e a vigilância de Heimdall, o guardião da Bifrost.',
+    'Você possui a visão aguçada e a vigilância de Heimdall, o guardião da Bifrost. Sua percepção é incomparável e você está sempre atento a qualquer ameaça. Você é leal e protetor, sempre pronto para defender Asgard.',
     'https://th.bing.com/th/id/R.558e9c6657eda9d7a1f3662b800dc1c4?rik=gdzrfFAYiDLd7A&pid=ImgRaw&r=0'
 );
 
-let characters = [frigg, thor, loki, heimdall];
-let currentQuestionIndex = 0;
-let selectedOptionIndex = null;
+// Array de personagens
+characters = [frigg, thor, loki, heimdall];
 
+// Perguntas do questionário com pontuações
 const questions = [
     {
         text: 'Em uma batalha, qual seria a sua abordagem?',
@@ -147,6 +157,11 @@ const questions = [
     }
 ];
 
+// Lógica Principal do Jogo
+
+/**
+ * Inicia o jogo, escondendo a tela de boas-vindas e mostrando o quiz.
+ */
 const startGame = () => {
     welcomeScreen.classList.add('hidden');
     quizScreen.classList.remove('hidden');
@@ -154,11 +169,15 @@ const startGame = () => {
     showQuestion();
 };
 
+/**
+ * Exibe a pergunta atual e suas opções na tela.
+ */
 const showQuestion = () => {
     resetOptions();
     const question = questions[currentQuestionIndex];
     questionText.textContent = question.text;
     
+    // Laço de repetição para criar e exibir as opções
     question.options.forEach((option, index) => {
         const optionCard = document.createElement('div');
         optionCard.classList.add('option-card');
@@ -172,6 +191,9 @@ const showQuestion = () => {
     nextBtn.classList.add('hidden');
 };
 
+/**
+ * Reinicia as opções na tela para a próxima pergunta.
+ */
 const resetOptions = () => {
     while (optionsContainer.firstChild) {
         optionsContainer.removeChild(optionsContainer.firstChild);
@@ -179,6 +201,11 @@ const resetOptions = () => {
     selectedOptionIndex = null;
 };
 
+/**
+ * Marca uma opção como selecionada e habilita o botão de próxima pergunta.
+ * @param {HTMLElement} card O elemento div da opção clicada.
+ * @param {number} index O índice da opção selecionada.
+ */
 const selectOption = (card, index) => {
     const allOptions = optionsContainer.querySelectorAll('.option-card');
     allOptions.forEach(option => option.classList.remove('selected'));
@@ -187,10 +214,14 @@ const selectOption = (card, index) => {
     nextBtn.classList.remove('hidden');
 };
 
+/**
+ * Avança para a próxima pergunta e calcula a pontuação.
+ */
 const nextQuestion = () => {
     if (selectedOptionIndex !== null) {
         const selectedPoints = questions[currentQuestionIndex].options[selectedOptionIndex].points;
         
+        // Laço de repetição para somar os pontos de cada personagem
         for (const charName in selectedPoints) {
             const character = characters.find(c => c.name.split(',')[0] === charName);
             if (character) {
@@ -200,6 +231,7 @@ const nextQuestion = () => {
         
         currentQuestionIndex++;
         
+        // Estrutura condicional para verificar se o quiz terminou
         if (currentQuestionIndex < questions.length) {
             showQuestion();
         } else {
@@ -208,6 +240,9 @@ const nextQuestion = () => {
     }
 };
 
+/**
+ * Exibe o resultado final do quiz, mostrando o personagem com a maior pontuação.
+ */
 const showResult = () => {
     quizScreen.classList.add('hidden');
     resultScreen.classList.remove('hidden');
@@ -215,6 +250,7 @@ const showResult = () => {
     let finalCharacter = characters[0];
     let maxScore = characters[0].score;
 
+    // Laço de repetição e estrutura condicional para encontrar a maior pontuação
     for (let i = 1; i < characters.length; i++) {
         if (characters[i].score > maxScore) {
             maxScore = characters[i].score;
@@ -229,33 +265,43 @@ const showResult = () => {
     characterScore.textContent = `Pontuação: ${finalCharacter.score} pontos`;
 };
 
-const resetGame = () => {
-    currentQuestionIndex = 0;
-    characters.forEach(c => c.score = 0);
-    selectedOptionIndex = null;
-    updateProgressBar();
-};
-
-const updateProgressBar = () => {
-    const progress = (currentQuestionIndex / questions.length) * 100;
-    progressFill.style.width = `${progress}%`;
-};
-
-// ===== MUDANÇA IMPORTANTE =====
-// Redireciona para a página principal (index.html)
-const backToMenu = () => {
-    window.location.href = '/GameQuizN1/index.html';
-};
-
+/**
+ * Reinicia o jogo para o estado inicial.
+ */
 const restartGame = () => {
     resultScreen.classList.add('hidden');
     welcomeScreen.classList.remove('hidden');
     resetGame();
 };
 
+// NOVO: Função para Voltar ao Menu Principal
+const backToMenu = () => {
+    window.location.href = '../../index.html';
+};
 
-// Event Listeners do Quiz
+/**
+ * Reseta o estado do jogo para começar de novo.
+ */
+const resetGame = () => {
+    currentQuestionIndex = 0;
+    // Garante que a pontuação de todos os personagens seja zerada
+    characters.forEach(c => c.score = 0); 
+    selectedOptionIndex = null;
+    updateProgressBar();
+};
+
+/**
+ * Atualiza a barra de progresso do quiz.
+ */
+const updateProgressBar = () => {
+    const progress = (currentQuestionIndex / questions.length) * 100;
+    progressFill.style.width = `${progress}%`;
+};
+
+// Event Listeners (Interação com o DOM)
 startBtn.addEventListener('click', startGame);
 nextBtn.addEventListener('click', nextQuestion);
 restartBtn.addEventListener('click', restartGame);
+
+// ADIÇÃO: Event Listener para o botão de voltar ao menu
 backToMenuBtn.addEventListener('click', backToMenu);
