@@ -1,6 +1,3 @@
-// ===============================================
-// DADOS DOS UNIVERSOS
-// ===============================================
 const universes = [
     {
         id: 'asgard',
@@ -33,12 +30,17 @@ const universes = [
         description: 'Entre no mundo de Kaijuu No. 8, onde monstros gigantes ameaçam a humanidade e heróis corajosos lutam para protegê-la. Descubra se você tem o que é preciso para enfrentar essas criaturas colossais.',
         tags: ['Monstros', 'Ação', 'Aventura'],
         imageUrl: 'https://stateless-fueradefoco.storage.googleapis.com/wp-content/uploads/2025/04/22144007/kaiju.webp'
+    },
+    {
+        id: 'batman',
+        title: 'Batman',
+        subtitle: 'Batman Quadrinhos',
+        description: 'Um quiz para os fãs do Batman, em Gothan City, você é o Batman ou um dos seus aliados? ou quem sabe um dos seus inimigos?',
+        tags: ['Heróis', 'Quadrinhos', 'Ação'],
+        imageUrl: 'Quizzes/Batman/img/batman.jpeg'
     }
 ];
 
-// ===============================================
-// CARROSSEL 3D
-// ===============================================
 class Carousel3D {
     constructor() {
         this.currentIndex = 0;
@@ -178,10 +180,13 @@ class Carousel3D {
 
         } else if (universe.id === 'batfamilia') {
             window.location.href = 'Quizzes/Batfamilia/batfamilia.html';
+            
+        } else if (universe.id === 'batman') {
+            window.location.href = 'Quizzes/Batman/batman.html';
 
         } else if (universe.id === 'kaijuu') {
             window.location.href = 'Quizzes/Kaijuu/kaijuu.html';
-            
+
         } else {
             alert(`Universo ${universe.title} em breve! Continue explorando o Nexus Multiversal.`);
         }
@@ -201,5 +206,4 @@ class Carousel3D {
     }
 }
 
-// Inicializa o Carrossel 3D
 const carousel = new Carousel3D();

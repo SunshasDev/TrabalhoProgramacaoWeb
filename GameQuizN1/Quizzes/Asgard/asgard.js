@@ -1,6 +1,3 @@
-// ===============================================
-// QUIZ LOGIC (Compactado)
-// ===============================================
 const welcomeScreen = document.getElementById('welcome-screen'), startBtn = document.getElementById('start-btn'), quizScreen = document.getElementById('quiz-screen'), questionText = document.getElementById('question-text'), optionsContainer = document.getElementById('options-container'), nextBtn = document.getElementById('next-btn'), resultScreen = document.getElementById('result-screen'), resultTitle = document.getElementById('result-title'), characterImage = document.getElementById('character-image'), characterName = document.getElementById('character-name'), characterDescription = document.getElementById('character-description'), characterScore = document.getElementById('character-score'), restartBtn = document.getElementById('restart-btn'), backToMenuBtn = document.getElementById('back-to-menu-btn'), progressFill = document.getElementById('progress-fill');
 
 class Character {
@@ -185,12 +182,10 @@ const restartGame = () => {
     resetGame();
 };
 
-// FUNÇÃO CRÍTICA: Redireciona para o menu principal (index.html)
 const backToMenu = () => {
-    window.location.href = '../../index.html'; // Assume que 'index.html' é a página do menu principal
+    window.location.href = '../../index.html';
 };
 
-// Event Listeners do Quiz
 startBtn.addEventListener('click', startGame);
 nextBtn.addEventListener('click', nextQuestion);
 restartBtn.addEventListener('click', restartGame);

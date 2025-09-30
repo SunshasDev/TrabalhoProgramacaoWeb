@@ -1,11 +1,9 @@
-// Criando personagens
 const personagens = [
     {nome:"Alice", sobre: "Curiosa e lógica - Sua curiosidade é o que a leva à aventura, mas é sua necessidade de encontrar lógica e ordem no caos que a define. Ela representa a inocência da infância confrontada com o ilógico e imprevisível do País das Maravilhas.", score: 0, imagem:"img/alice.jpg"},
     {nome:"Chapeleiro Maluco", sobre: "Excêntrico e imprevisível - personificação do caos e do absurdo. Ele vive em uma festa do chá perpétua com a Lebre de Março e aterroriza o Tempo. Seu comportamento é volátil, mudando de amigável para rude sem aviso prévio.", score: 0, imagem:"img/Chapeleiro.jpg"},
     {nome:"Coelho Branco", sobre: "Ansioso e apressado - Ele está sempre correndo, preocupado em se atrasar para seus compromissos, agindo de forma subserviente com seus superiores e pomposa com os que considera inferiores.", score: 0, imagem:"img/coelho.jpg"}
 ];
 
-// Criando as perguntas
 const perguntas = [
     {
         texto: "Qual é a sua cor favorita?",
@@ -105,7 +103,6 @@ class QuizGame {
         this.currentIndex = 0;
         this.respostas = new Array(perguntas.length).fill(null);
 
-        // pegar elementos do HTML
         this.telaInicial = document.getElementById("tela-inicial");
         this.quizContainer = document.getElementById("quiz-container");
         this.resultadoEl = document.getElementById("resultado");
@@ -114,18 +111,13 @@ class QuizGame {
         this.voltarBtn = document.getElementById("voltar");
         this.proximaBtn = document.getElementById("proxima");
 
-        // eventos dos botões
         document.getElementById("botaoInicial")
             .addEventListener("click", () => this.start());
         this.proximaBtn.addEventListener("click", () => this.proximaPergunta());
         this.voltarBtn.addEventListener("click", () => this.voltarPergunta());
     }
 
-    /**
-     * Redireciona o usuário para a página principal (Menu).
-     */
     voltarAoMenuPrincipal() {
-        // Redireciona para o arquivo index.html (assumido como o menu principal)
         window.location.href = '../../index.html'; 
     }
 
@@ -142,7 +134,6 @@ class QuizGame {
         const pergunta = this.perguntas[this.currentIndex];
         this.perguntaEl.textContent = pergunta.texto;
 
-        // limpar opções antigas
         this.opcoesEl.innerHTML = "";
 
         pergunta.opcoes.forEach((opcao, index) => {
@@ -150,13 +141,11 @@ class QuizGame {
             btn.textContent = opcao.texto;
             btn.className = "opcao";
 
-            // marcar se já respondeu
             if (this.respostas[this.currentIndex] === index) {
                 btn.classList.add('selected'); 
             }
 
             btn.addEventListener("click", () => {
-                // Remove a seleção anterior e aplica a nova
                 this.opcoesEl.querySelectorAll('.opcao').forEach(b => b.classList.remove('selected'));
                 btn.classList.add('selected');
 
@@ -166,7 +155,6 @@ class QuizGame {
             this.opcoesEl.appendChild(btn);
         });
 
-        // controle dos botões
         this.voltarBtn.disabled = this.currentIndex === 0;
         this.proximaBtn.textContent =
             this.currentIndex === this.perguntas.length - 1 ? "Finalizar" : "Próxima";
@@ -190,10 +178,8 @@ class QuizGame {
     }
 
     finalizar() {
-        // zera pontos
         this.personagens.forEach(p => p.score = 0);
 
-        // soma pontos de acordo com as respostas
         this.respostas.forEach((resp, i) => {
             if (resp !== null) {
                 const pontos = this.perguntas[i].opcoes[resp].score;
@@ -201,13 +187,11 @@ class QuizGame {
             }
         });
 
-        // descobre vencedor
         let vencedor = this.personagens.reduce((a, b) => a.score > b.score ? a : b);
 
         this.quizContainer.style.display = "none";
         this.resultadoEl.style.display = "block";
         
-        // HTML injetado na tela de resultado, incluindo o botão 'Voltar ao Menu'
         this.resultadoEl.innerHTML = `
             <h2>Seu personagem é: ${vencedor.nome}</h2>
             <img src="${vencedor.imagem}" alt="${vencedor.nome}" style="max-width:200px; border-radius:10px; margin:15px 0;">
@@ -222,5 +206,4 @@ class QuizGame {
     }
 }
 
-// criar o jogo
 const jogo = new QuizGame(personagens, perguntas);
