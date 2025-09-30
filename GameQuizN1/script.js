@@ -32,12 +32,20 @@ const universes = [
         imageUrl: 'https://stateless-fueradefoco.storage.googleapis.com/wp-content/uploads/2025/04/22144007/kaiju.webp'
     },
     {
-        id: 'batman',
-        title: 'Batman',
-        subtitle: 'Batman Quadrinhos',
-        description: 'Um quiz para os fãs do Batman, em Gothan City, você é o Batman ou um dos seus aliados? ou quem sabe um dos seus inimigos?',
-        tags: ['Heróis', 'Quadrinhos', 'Ação'],
-        imageUrl: 'Quizzes/Batman/img/batman.jpeg'
+        id: 'naruto',
+        title: 'Naruto',
+        subtitle: 'Ninja do Mundo Shinobi',
+        description: 'Descubra qual personagem de Naruto você mais se parece! Será que você é tão determinado quanto Naruto, tão estratégico quanto Shikamaru, ou talvez tão leal quanto Hinata?',
+        tags: ['Anime', 'Ninja', 'Ação'],
+        imageUrl: 'https://sociedadegeek.com.br/wp-content/uploads/2025/09/Naruto-e-amigos-1024x532.png'
+    },
+    {
+        id: 'formula1',
+        title: 'Fórmula 1',
+        subtitle: 'Velocidade e Adrenalina nas Pistas',
+        description: 'Quem é você no mundo da Fórmula 1? Descubra qual dos grandes pilotos você mais se parece, desde a ousadia de Verstappen até a precisão de Hamilton.',
+        tags: ['Esporte', 'Corrida', 'Automobilismo'],
+        imageUrl: 'https://mcdn.wallpapersafari.com/medium/65/44/xkwzSW.jpg'
     }
 ];
 
@@ -112,6 +120,8 @@ class Carousel3D {
             touchEndX = e.changedTouches[0].screenX;
             this.handleSwipe(touchStartX, touchEndX);
         });
+
+        document.addEventListener('keydown', (e) => this.handleKeyPress(e));
     }
 
     handleSwipe(startX, endX) {
@@ -122,6 +132,20 @@ class Carousel3D {
             this.prev();
         }
     }
+
+    handleKeyPress(e) {
+        if (document.activeElement.tagName === 'INPUT' || document.activeElement.tagName === 'TEXTAREA') {
+            return;
+        }
+
+        if (e.key === 'ArrowLeft') {
+            this.prev();
+            e.preventDefault(); 
+        } else if (e.key === 'ArrowRight') {
+            this.next();
+            e.preventDefault();
+        }
+    }   
 
     updateCarousel() {
         const total = this.items.length;
@@ -170,8 +194,6 @@ class Carousel3D {
             return;
         }
 
-        // ===== MUDANÇA IMPORTANTE =====
-        // Redireciona para a página do quiz se o ID for 'asgard'
         if (universe.id === 'asgard') {
             window.location.href = 'Quizzes/Asgard/asgard.html';
 
@@ -181,14 +203,17 @@ class Carousel3D {
         } else if (universe.id === 'batfamilia') {
             window.location.href = 'Quizzes/Batfamilia/batfamilia.html';
             
-        } else if (universe.id === 'batman') {
-            window.location.href = 'Quizzes/Batman/batman.html';
-
         } else if (universe.id === 'kaijuu') {
             window.location.href = 'Quizzes/Kaijuu/kaijuu.html';
 
+        } else if (universe.id === 'naruto') {
+            window.location.href = 'Quizzes/Naruto/naruto.html';
+
+        } else if (universe.id === 'formula1') {
+            window.location.href = 'Quizzes/Formula1/formula1.html';
+
         } else {
-            alert(`Universo ${universe.title} em breve! Continue explorando o Nexus Multiversal.`);
+            alert(`Universo ${universe.title} em breve! Continue explorando o Multiversal.`);
         }
     }
 

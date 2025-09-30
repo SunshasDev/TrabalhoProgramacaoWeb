@@ -115,4 +115,12 @@ function chamarResultado() {
 
     resultado.innerHTML = `<h2>Você é ${vencedor.nome}!</h2><img src="${vencedor.img}" alt="${vencedor.nome}">`;
     console.log(personagens);
+    
+};
+
+this.voltarMenuBtn = document.getElementById('voltarMenu');
+this.voltarMenuBtn.onclick = () => this.voltarAoMenuPrincipal();
+this.voltarAoMenuPrincipal = function() {
+        console.log('Voltando ao menu principal...');
+        window.location.href = '../../index.html';
 };
