@@ -35,7 +35,7 @@ const universes = [
         id: 'naruto',
         title: 'Naruto',
         subtitle: 'Ninja do Mundo Shinobi',
-        description: 'Descubra qual personagem de Naruto você mais se parece! Será que você é tão determinado quanto Naruto, tão estratégico quanto Shikamaru, ou talvez tão leal quanto Hinata?',
+        description: 'Descubra qual personagem de Naruto você mais se parece! Dentre Naruto, Sasuke, Sakura, Kakashi e Itachi, quem reflete melhor sua personalidade e estilo ninja?',
         tags: ['Anime', 'Ninja', 'Ação'],
         imageUrl: 'https://sociedadegeek.com.br/wp-content/uploads/2025/09/Naruto-e-amigos-1024x532.png'
     },

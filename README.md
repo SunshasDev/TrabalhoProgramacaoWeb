@@ -1,7 +1,7 @@
 # TrabalhoProgramacaoWeb
 Colaboradores:
 - Luís Eduardo O. Maia
-- Luís Gustavo G. Damascena
+- Luíz Gustavo G. Damascena
 - Lidian Kelly de Sousa Alves
 - Isaque Costa Aragão
 - João Pedro Antunes Abrantes
