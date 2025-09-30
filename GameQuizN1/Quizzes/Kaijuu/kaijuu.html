@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz Kaiju No. 8</title>
+  <link rel="stylesheet" href="kaijuu.css">
+</head>
+<body>
+  <div id="tela-quiz" class="caixote">
+    <h1>Qual personagem de Kaiju No. 8 você é?</h1>
+
+    <form id="quiz">
+
+     
+      <div class="questao">
+        <p>1. Qual sua maior qualidade?</p>
+        <label><input type="radio" name="q1" data-personagem="Kafka"> Determinação</label>
+        <label><input type="radio" name="q1" data-personagem="Mina"> Liderança</label>
+        <label><input type="radio" name="q1" data-personagem="Hoshina"> Agilidade e técnica</label>
+        <label><input type="radio" name="q1" data-personagem="Kikoru"> Força e orgulho</label>
+      </div>
+
+      
+      <div class="questao">
+        <p>2. Qual papel você teria na Força de Defesa?</p>
+        <label><input type="radio" name="q2" data-personagem="Kafka"> Ajudar e proteger os outros</label>
+        <label><input type="radio" name="q2" data-personagem="Mina"> Liderar a equipe</label>
+        <label><input type="radio" name="q2" data-personagem="Hoshina"> Lutar na linha de frente com técnica</label>
+        <label><input type="radio" name="q2" data-personagem="Kikoru"> Ser o prodígio e mostrar força</label>
+      </div>
+
+   
+      <div class="questao">
+        <p>3. Qual arma você prefere?</p>
+        <label><input type="radio" name="q3" data-personagem="Kafka"> Punhos (mesmo sem arma)</label>
+        <label><input type="radio" name="q3" data-personagem="Mina"> Rifle de alta potência</label>
+        <label><input type="radio" name="q3" data-personagem="Hoshina"> Espadas afiadas</label>
+        <label><input type="radio" name="q3" data-personagem="Kikoru"> Machados enormes</label>
+      </div>
+
+
+      <div class="questao">
+        <p>4. Como você reage diante de um inimigo gigante?</p>
+        <label><input type="radio" name="q4" data-personagem="Kafka"> Dou meu máximo mesmo que seja impossível</label>
+        <label><input type="radio" name="q4" data-personagem="Mina"> Mantenho a calma e lidero a equipe</label>
+        <label><input type="radio" name="q4" data-personagem="Hoshina"> Analiso o ponto fraco e ataco</label>
+        <label><input type="radio" name="q4" data-personagem="Kikoru"> Avanço com força bruta</label>
+      </div>
+
+    
+      <div class="questao">
+        <p>5. Qual é sua motivação principal?</p>
+        <label><input type="radio" name="q5" data-personagem="Kafka"> Proteger os inocentes</label>
+        <label><input type="radio" name="q5" data-personagem="Mina"> Defender e liderar a equipe</label>
+        <label><input type="radio" name="q5" data-personagem="Hoshina"> Aperfeiçoar minhas habilidades</label>
+        <label><input type="radio" name="q5" data-personagem="Kikoru"> Mostrar meu poder</label>
+      </div>
+
+     
+      <div class="questao">
+        <p>6. Qual seria sua tática de batalha?</p>
+        <label><input type="radio" name="q6" data-personagem="Kafka"> Improvisar e ser criativo</label>
+        <label><input type="radio" name="q6" data-personagem="Mina"> Estratégia e liderança</label>
+        <label><input type="radio" name="q6" data-personagem="Hoshina"> Ataque rápido e preciso</label>
+        <label><input type="radio" name="q6" data-personagem="Kikoru"> Força bruta e intimidação</label>
+      </div>
+
+    
+      <div class="questao">
+        <p>7. Como você lida com situações perigosas?</p>
+        <label><input type="radio" name="q7" data-personagem="Kafka"> Enfrento mesmo com medo</label>
+        <label><input type="radio" name="q7" data-personagem="Mina"> Lidero e dou instruções</label>
+        <label><input type="radio" name="q7" data-personagem="Hoshina"> Analiso e ataco com técnica</label>
+        <label><input type="radio" name="q7" data-personagem="Kikoru"> Avanço sem pensar</label>
+      </div>
+
+      
+      <div class="questao">
+        <p>8. Qual seu estilo de luta?</p>
+        <label><input type="radio" name="q8" data-personagem="Kafka"> Versátil e adaptável</label>
+        <label><input type="radio" name="q8" data-personagem="Mina"> Preciso e tático</label>
+        <label><input type="radio" name="q8" data-personagem="Hoshina"> Rápido e habilidoso</label>
+        <label><input type="radio" name="q8" data-personagem="Kikoru"> Poderoso e direto</label>
+      </div>
+
+    
+      <div class="questao">
+        <p>9. Qual característica melhor te define?</p>
+        <label><input type="radio" name="q9" data-personagem="Kafka"> Persistência</label>
+        <label><input type="radio" name="q9" data-personagem="Mina"> Liderança</label>
+        <label><input type="radio" name="q9" data-personagem="Hoshina"> Técnica</label>
+        <label><input type="radio" name="q9" data-personagem="Kikoru"> Força</label>
+      </div>
+
+      
+      <div class="questao">
+        <p>10. Qual frase mais combina com você?</p>
+        <label><input type="radio" name="q10" data-personagem="Kafka"> "Nunca desisto, mesmo contra monstros"</label>
+        <label><input type="radio" name="q10" data-personagem="Mina"> "Liderar é proteger a todos"</label>
+        <label><input type="radio" name="q10" data-personagem="Hoshina"> "Precisão e técnica vencem qualquer batalha"</label>
+        <label><input type="radio" name="q10" data-personagem="Kikoru"> "Força e determinação acima de tudo"</label>
+      </div>
+
+      <button type="button" id="btn-enviar" class="btn">Descobrir meu personagem!</button>
+    </form>
+
+    <div id="resultado" class="resultado" style="display: none;"></div>
+  </div>
+
+  <script src="kaijuu.js"></script>
+</body>
+</html>

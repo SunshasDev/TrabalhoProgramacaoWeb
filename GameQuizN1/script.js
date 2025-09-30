@@ -8,39 +8,31 @@ const universes = [
         subtitle: 'Reino dos Deuses Nórdicos',
         description: 'Entre no majestoso reino de Asgard, lar dos deuses nórdicos. Descubra se você possui a sabedoria de Odin, a força de Thor ou a astúcia de Loki.',
         tags: ['Mitologia', 'Deuses', 'Vikings'],
-        imageUrl: 'imgs/asgardbanner.jpg'
+        imageUrl: 'https://64.media.tumblr.com/237f1a1830a113b85ca5f081d48215a3/3fc3ccbb50440ee3-a7/s1280x1920/bfd688495178be404bb46faaf2e9934956ae7ae2.jpg'
     },
     {
-        id: 'valorant',
-        title: 'Valorant',
-        subtitle: 'Terra de um futuro Próximo',
-        description: 'Se aventure em uma Terra de um futuro próximo impactado por grandes avanços na tecnologia, onde a radianita e',
-        tags: ['Jogo', 'Fantasia', 'FPS'],
-        imageUrl: 'imgs/valorantbanner.jpg'
+        id: 'alice',
+        title: 'Alice no País das Maravilhas',
+        subtitle: 'Um mundo de fantasia e surrealismo',
+        description: 'Explore o País das Maravilhas, um mundo onde a lógica é invertida e a imaginação não tem limites. Encontre seu personagem nesse universo intrigante',
+        tags: ['Fantasia', 'Literatura Infantil', 'Fantasico'],
+        imageUrl: 'https://disney.images.edge.bamgrid.com/ripcut-delivery/v2/variant/disney/9b138ef4-f8f2-45b8-a57c-a1b7bd3a77b4/compose?aspectRatio=1.78&format=webp&width=1200'
     },
     {
-        id: 'cygnus',
-        title: 'Cygnus',
-        subtitle: 'Futuro Cyberpunk',
-        description: 'Navegue por megacidades neon onde a tecnologia e a humanidade se fundem. Hackers, corporações e rebeldes lutam pelo controle.',
-        tags: ['Sci-Fi', 'Cyberpunk', 'Tecnologia'],
-        imageUrl: 'https://images.unsplash.com/photo-1535223289827-42f1e9919769?w=800&h=600&fit=crop'
+        id: 'batfamilia',
+        title: 'Batfamília',
+        subtitle: 'Heróis de Gotham',
+        description: 'Mergulhe no universo sombrio de Gotham City e descubra qual membro da Batfamília você é. Será que você tem a determinação de Bruce Wayne.',
+        tags: ['Heróis', 'Quadrinhos', 'Ação'],
+        imageUrl: 'https://i.redd.it/bpb1s6de5aub1.jpg'
     },
     {
-        id: 'terra-nova',
-        title: 'Terra Nova',
-        subtitle: 'Mundo Pós-Apocalíptico',
-        description: 'Sobreviva em um mundo transformado onde a natureza recuperou as cidades e novas criaturas dominam a terra selvagem.',
-        tags: ['Survival', 'Natureza', 'Aventura'],
-        imageUrl: 'https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?w=800&h=600&fit=crop'
-    },
-    {
-        id: 'aethel',
-        title: 'Aethel',
-        subtitle: 'Cidades Flutuantes',
-        description: 'Voe entre ilhas suspensas no céu, onde civilizações antigas dominaram os segredos da levitação e do éter.',
-        tags: ['Steampunk', 'Aéreo', 'Exploração'],
-        imageUrl: 'https://images.unsplash.com/photo-1446776653964-20c1d3a81b06?w=800&h=600&fit=crop'
+        id: 'kaijuu',
+        title: 'Kaijuu No. 8',
+        subtitle: 'Monstros Gigantes e Heróis',
+        description: 'Entre no mundo de Kaijuu No. 8, onde monstros gigantes ameaçam a humanidade e heróis corajosos lutam para protegê-la. Descubra se você tem o que é preciso para enfrentar essas criaturas colossais.',
+        tags: ['Monstros', 'Ação', 'Aventura'],
+        imageUrl: 'https://stateless-fueradefoco.storage.googleapis.com/wp-content/uploads/2025/04/22144007/kaiju.webp'
     }
 ];
 
@@ -179,7 +171,17 @@ class Carousel3D {
         // ===== MUDANÇA IMPORTANTE =====
         // Redireciona para a página do quiz se o ID for 'asgard'
         if (universe.id === 'asgard') {
-            window.location.href = 'Quizzes/Asgard/asgard.html'; // Nome do seu arquivo HTML do quiz
+            window.location.href = 'Quizzes/Asgard/asgard.html';
+
+        } else if (universe.id === 'alice') {
+            window.location.href = 'Quizzes/Alice/alice.html';
+
+        } else if (universe.id === 'batfamilia') {
+            window.location.href = 'Quizzes/Batfamilia/batfamilia.html';
+
+        } else if (universe.id === 'kaijuu') {
+            window.location.href = 'Quizzes/Kaijuu/kaijuu.html';
+            
         } else {
             alert(`Universo ${universe.title} em breve! Continue explorando o Nexus Multiversal.`);
         }
